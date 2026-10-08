@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sebastião Alves Nicolau — Currículo</title>
+<title>Sebastião Alves Nicolau – Curriculum Vitae</title>
 <style>
   :root {
     --azul: #1f3a5f;
@@ -22,158 +22,90 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     background: var(--cinza-fundo);
     color: var(--cinza-texto);
-    line-height: 1.55;
+    line-height: 1.5;
+    font-size: 14.5px;
   }
-  .container {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 0 20px 60px;
-  }
+  .container { max-width: 860px; margin: 0 auto; padding: 0 20px 40px; }
   header.hero {
     background: linear-gradient(135deg, var(--azul) 0%, var(--azul-claro) 100%);
     color: var(--branco);
-    padding: 48px 20px 36px;
+    padding: 36px 20px 28px;
   }
   header.hero .container { padding-bottom: 0; }
-  h1 {
-    margin: 0 0 6px;
-    font-size: 2rem;
-    letter-spacing: -0.01em;
-  }
-  .subtitulo {
-    font-size: 1.05rem;
-    color: #dce7f3;
-    margin: 0 0 18px;
-  }
-  .contato-linha {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px 18px;
-    font-size: 0.92rem;
-    color: #eaf1f9;
-    margin-bottom: 20px;
-  }
-  .contato-linha span { display: inline-flex; align-items: center; gap: 6px; }
-  .links-rapidos {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  .link-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(255,255,255,0.14);
-    border: 1px solid rgba(255,255,255,0.35);
-    color: var(--branco);
-    text-decoration: none;
-    padding: 8px 14px;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: background 0.15s ease;
-  }
-  .link-btn:hover { background: rgba(255,255,255,0.28); }
-  .link-btn svg { width: 16px; height: 16px; fill: currentColor; flex-shrink: 0; }
+  h1 { margin: 0 0 4px; font-size: 1.9rem; letter-spacing: -0.01em; }
+  .subtitulo { font-size: 1.02rem; color: #dce7f3; margin: 0 0 14px; }
+  .contato-linha { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 0.9rem; color: #eaf1f9; }
+  .contato-linha a { color: #fff; text-decoration: none; }
 
-  main { padding-top: 32px; }
+  main { padding-top: 22px; }
   section {
     background: var(--branco);
     border: 1px solid var(--borda);
     border-radius: 10px;
-    padding: 24px 28px;
-    margin-bottom: 20px;
+    padding: 18px 24px;
+    margin-bottom: 14px;
   }
   section h2 {
-    margin: 0 0 14px;
-    font-size: 1.05rem;
+    break-after: avoid;
+    margin: 0 0 10px;
+    font-size: 0.98rem;
     text-transform: uppercase;
     letter-spacing: 0.04em;
     color: var(--azul);
     border-bottom: 2px solid var(--cinza-fundo);
-    padding-bottom: 10px;
+    padding-bottom: 8px;
   }
-  section p { margin: 0 0 10px; }
+  section p { margin: 0 0 8px; }
   section ul { margin: 0; padding-left: 20px; }
-  section li { margin-bottom: 6px; }
+  section li { margin-bottom: 4px; }
 
-  /* Áreas de atuação — grid de cards */
-  .areas-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 14px;
-  }
-  .area-card {
-    border: 1px solid var(--borda);
-    border-radius: 8px;
-    padding: 14px 16px;
-    background: var(--cinza-fundo);
-  }
-  .area-card h3 {
-    margin: 0 0 6px;
-    font-size: 0.98rem;
-    color: var(--cinza-escuro);
-  }
-  .area-card p { margin: 0 0 8px; font-size: 0.88rem; }
-  .nivel {
-    display: inline-block;
-    font-size: 0.74rem;
-    font-weight: 600;
-    padding: 3px 9px;
-    border-radius: 999px;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-  }
-  .nivel-pratica { background: #e4f3e9; color: var(--verde); }
-  .nivel-curso { background: #faf0e0; color: var(--ambar); }
-
-  .nota-objetivo {
+  .destaque {
     background: #f0f5fb;
     border-left: 4px solid var(--azul-claro);
     border-radius: 6px;
-    padding: 14px 18px;
+    padding: 10px 14px;
     font-size: 0.92rem;
-    margin-top: 12px;
+    margin-top: 8px;
   }
 
-  .experiencia-item {
-    padding: 14px 0;
-    border-bottom: 1px solid var(--cinza-fundo);
-  }
-  .experiencia-item:last-child { border-bottom: none; padding-bottom: 0; }
-  .experiencia-header {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 4px 12px;
-    font-weight: 600;
-    color: var(--cinza-escuro);
-  }
-  .periodo {
-    font-weight: 400;
-    color: #7a8190;
-    font-size: 0.88rem;
-    white-space: nowrap;
-  }
-  .experiencia-item ul { margin-top: 6px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; }
+  .card { break-inside: avoid; border: 1px solid var(--borda); border-radius: 8px; padding: 10px 14px; background: var(--cinza-fundo); }
+  .card h3 { margin: 0 0 4px; font-size: 0.93rem; color: var(--cinza-escuro); }
+  .card p { margin: 0; font-size: 0.86rem; }
 
-  footer {
-    text-align: center;
-    font-size: 0.85rem;
-    color: #8a909a;
-    padding: 28px 20px 10px;
-  }
-  footer .links-rapidos { justify-content: center; margin-top: 10px; }
-  footer .link-btn {
-    background: var(--branco);
-    border: 1px solid var(--borda);
-    color: var(--azul);
-  }
-  footer .link-btn:hover { background: var(--cinza-fundo); }
+  .exp { padding: 10px 0; border-bottom: 1px solid var(--cinza-fundo); break-inside: avoid; }
+  .exp:last-child { border-bottom: none; padding-bottom: 0; }
+  .exp-header { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 2px 12px; font-weight: 600; color: var(--cinza-escuro); }
+  .periodo { font-weight: 400; color: #7a8190; font-size: 0.86rem; white-space: nowrap; }
+  .exp ul { margin-top: 4px; }
+  .tag { display: inline-block; font-size: 0.7rem; font-weight: 700; padding: 1px 8px; border-radius: 999px; background: #e4f3e9; color: var(--verde); text-transform: uppercase; letter-spacing: 0.03em; margin-left: 6px; vertical-align: 1px; }
+
+  /* Linha do tempo */
+  .timeline { list-style: none; padding: 0; margin: 0; position: relative; }
+  .timeline::before { content: ""; position: absolute; left: 89px; top: 4px; bottom: 4px; width: 2px; background: var(--borda); }
+  .timeline li { display: grid; grid-template-columns: 76px 1fr; gap: 0 28px; margin-bottom: 6px; position: relative; break-inside: avoid; }
+  .timeline li::before { content: ""; position: absolute; left: 84px; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--azul-claro); border: 2px solid #fff; box-shadow: 0 0 0 1px var(--azul-claro); }
+  .timeline li.marco::before { background: var(--ambar); box-shadow: 0 0 0 1px var(--ambar); }
+  .ano { font-weight: 700; color: var(--azul); font-size: 0.85rem; text-align: right; padding-top: 1px; }
+  .evento { font-size: 0.88rem; }
+  .evento strong { color: var(--cinza-escuro); }
+
+  footer { text-align: center; font-size: 0.82rem; color: #8a909a; padding: 10px 20px; }
 
   @media (max-width: 600px) {
-    h1 { font-size: 1.6rem; }
-    section { padding: 20px; }
+    h1 { font-size: 1.55rem; }
+    section { padding: 16px; }
+    .timeline::before { left: 62px; }
+    .timeline li { grid-template-columns: 52px 1fr; }
+    .timeline li::before { left: 58px; }
+  }
+  @page { size: A4; margin: 10mm 0; }
+  @media print {
+    body { background: #fff; font-size: 12.5px; }
+    header.hero { -webkit-print-color-adjust: exact; print-color-adjust: exact; padding: 22px 20px 18px; }
+    .card, .destaque, .tag, .timeline li::before { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    section { padding: 12px 18px; margin-bottom: 10px; break-inside: auto; }
+    main { padding-top: 14px; }
   }
 </style>
 </head>
@@ -181,177 +113,254 @@
 
 <header class="hero">
   <div class="container">
-    <h1>Sebastião Alves Nicolau</h1>
-    <p class="subtitulo">Técnico Multidisciplinar &middot; Diagnóstico e Solução com Base Técnica e Tecnológica</p>
+    <h1>Sebastião Alves Nicolau &ndash; Curriculum Vitae</h1>
+    <p style="margin:2px 0 10px; font-style:italic; color:#fdf3d8; font-size:0.95rem;">Na verdade, não é. É uma <strong>Ficha Técnica e Manual do Usuário</strong>. Modelo 1962, revisado em 2026 e ainda em pleno funcionamento, mas sempre precisando de reparos, reformas e atualizações. 😄</p>
+    <p style="margin:0 0 12px; display:inline-block; background:#fdf3d8; color:#5a3b00; font-weight:700; padding:4px 12px; border-radius:6px; font-size:0.95rem;">⚠️ Leia com atenção antes de contratar.</p>
+    <p class="subtitulo">Desenvolvedor &middot; IA Aplicada, Automação e Inovação &middot; Mais de 40 anos transformando tecnologia em soluções</p>
     <div class="contato-linha">
-      <span>📍 Cariacica &ndash; ES (fácil acesso a Vitória)</span>
+      <span>📍 Cariacica – ES (próximo a Vitória)</span>
+      <span>📱 (27) 99989-8737</span>
       <span>✉️ sanicolauvix@gmail.com</span>
-      <span>🚗 CNH categoria AB</span>
-    </div>
-    <div class="links-rapidos">
-      <a class="link-btn" href="https://wa.me/5527999898737" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.74.46 3.44 1.32 4.94L2 22l5.29-1.39a9.9 9.9 0 0 0 4.75 1.21h.01c5.46 0 9.9-4.45 9.9-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.12c-.24.68-1.39 1.33-1.92 1.4-.49.07-1.1.1-1.78-.11-.41-.13-.94-.3-1.62-.6-2.86-1.24-4.72-4.13-4.86-4.32-.14-.19-1.16-1.54-1.16-2.94s.73-2.09.99-2.38c.26-.28.56-.35.75-.35h.54c.17 0 .4-.06.63.48.24.56.8 1.96.87 2.1.07.14.11.31.02.5-.09.19-.14.31-.27.48-.14.17-.29.37-.41.5-.14.14-.28.29-.12.57.16.28.71 1.17 1.52 1.9 1.05.94 1.93 1.23 2.21 1.37.28.14.44.12.61-.07.17-.19.71-.83.9-1.11.19-.28.38-.24.63-.14.26.09 1.64.77 1.92.91.28.14.47.21.53.33.07.12.07.68-.17 1.36Z"/></svg>
-        WhatsApp
-      </a>
-      <a class="link-btn" href="https://www.linkedin.com/in/sebastiao-alves-nicolau-421ab71bb/" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.44-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z"/></svg>
-        LinkedIn
-      </a>
-      <a class="link-btn" href="https://www.facebook.com/sebastiaoalves.nicolau" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24"><path d="M13.5 21v-7.5h2.5l.5-3h-3V8.5c0-.87.24-1.46 1.49-1.46H16.5V4.3c-.26-.03-1.15-.11-2.19-.11-2.17 0-3.66 1.32-3.66 3.75V10.5H8v3h2.65V21h2.85Z"/></svg>
-        Facebook
-      </a>
-      <a class="link-btn" href="https://github.com/sanicolauvix" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.58 2 12.19c0 4.5 2.87 8.32 6.84 9.67.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.46-1.19-1.11-1.51-1.11-1.51-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.28 2.75 1.05a9.29 9.29 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.81 0 .27.18.6.69.49A10.02 10.02 0 0 0 22 12.19C22 6.58 17.52 2 12 2Z"/></svg>
-        GitHub
-      </a>
+      <span>🔗 <a href="https://www.linkedin.com/in/sebastiao-alves-nicolau-421ab71bb/">linkedin.com/in/sebastiao-alves-nicolau-421ab71bb</a></span>
+      <span>💻 <a href="https://github.com/sanicolauvix">github.com/sanicolauvix</a></span>
+      <span>📄 <a href="./Sebastiao_Alves_Nicolau_Curriculum_Vitae.pdf">Baixar PDF</a></span>
     </div>
   </div>
 </header>
 
 <main class="container">
 
+  <section class="destaque" style="border:1px solid var(--borda); border-left:4px solid var(--ambar); background:#fdf8ee;">
+    <strong>Uma nota antes de começar:</strong> este não é um currículo tradicional, preso a regras e formatos. Assim como fiz ao longo de toda a carreira, decidi inovar também aqui: estas páginas são o retrato da minha trajetória, de quem eu sou, e não apenas uma lista de cargos.
+  </section>
+
   <section>
     <h2>Objetivo</h2>
-    <p>Atuar em <strong>serviços técnicos práticos e manuais</strong> — mecânica, elétrica, eletrônica, refrigeração ou logística — aplicando uma base técnica sólida construída ao longo da trajetória profissional.</p>
-    <div class="nota-objetivo">
-      Depois de muitos anos dedicado ao desenvolvimento de sistemas (trabalho de computador, sentado), busco agora consolidar a <strong>prática de campo</strong> nas áreas técnicas em que já tenho formação e cursos — por isso estou aberto a posições de <strong>auxiliar ou aprendiz</strong>: tenho a teoria, e sei que teoria e prática precisam andar juntas.
+    <p>Busco desafios que me façam transpor barreiras e encontrar alternativas onde outros veem obstáculos. Quero aplicar mais de 40 anos de experiência em sistemas, processos e automação tendo a <strong>inteligência artificial generativa como parceira na equipe</strong>, e não como simples ferramenta: ela amplia o que a experiência já sabe fazer, e juntas geram soluções e resultados concretos.</p>
+    <div class="destaque"><em>"O passado como arquivo, o presente como prêmio e o futuro como aprendizado."</em></div>
+      <p style="margin-top:10px"><strong>Não quero ser um candidato à vaga. Quero ser a pessoa que vai resolver o problema de quem me contratar.</strong> O dinheiro é uma necessidade e faz parte, mas não é o objetivo: a remuneração pelo meu tempo é muito mais que isso.</p>
+  </section>
+
+  <section>
+    <h2>Sobre mim</h2>
+    <p>Minha carreira acompanhou cada grande mudança da tecnologia, e em cada uma delas estive entre os primeiros a aplicá-la na prática. Comecei com COBOL e Unix, passei por Clipper e Delphi, e hoje desenvolvo em Python e para Android. Vivi a chegada da internet e, desde 2024, o início da inteligência artificial generativa: comecei com o ChatGPT e hoje uso o Claude como ferramenta central de desenvolvimento, pesquisa e estudo.</p>
+    <p>Não tenho fronteiras: nenhum lugar ou desafio é longe demais para que eu tente alcançá-lo. O fracasso também faz parte do aprendizado; o que não se pode é desistir ou deixar de tentar. Tenho 64 anos de idade e mais de 40 de tecnologia, sempre atualizado e aberto a mudanças de área e de localização.</p>
+    <div class="destaque">Minha história começou quando troquei um carro pelo meu primeiro computador, um <strong>Sisco</strong> com disquete de 8&Prime; e HD de 10 MB. Junto vieram os fontes de uma folha de pagamento em COBOL, e foi estudando esse código que tudo começou.</div>
+  </section>
+
+  <section style="break-inside: avoid;">
+    <h2>A tecnologia que vivi</h2>
+    <p>À medida que os anos passaram, eu sempre fiquei mais atualizado:</p>
+    <ul>
+      <li>Guardei programas em <strong>fita cassete</strong>, num gravador ligado a um computador <strong>Apple de 8 bits</strong>.</li>
+      <li>Quando o armazenamento era em disquetes flexíveis, adquiri um <strong>HD rígido</strong>.</li>
+      <li>Instalei o <strong>Windows com uma pilha de disquetes</strong>.</li>
+      <li>Em <strong>1986</strong>, já assistia a palestras sobre como seria o futuro, com objetos e máquinas conectados: a ideia que hoje chamamos de <strong>Internet das Coisas</strong>.</li>
+      <li>Quando a folha de pagamento era totalmente manual, implantei uma <strong>informatizada</strong>.</li>
+      <li>Vi o <strong>kardex</strong> (controle de estoque em fichas) dar lugar à informatização.</li>
+      <li>Linguagens hoje consideradas "mortas": <strong>COBOL, Pascal, LTD, Clipper e dBase</strong>.</li>
+      <li>Sistemas operacionais: <strong>DOS, Windows 1.0, Novell NetWare e Linux</strong>, que na época era o rei do correio eletrônico.</li>
+      <li>Redes com <strong>cabo coaxial</strong>, o modem antes do switch, e a <strong>internet discada pelo UOL</strong>.</li>
+      <li>Lembro-me, como se fosse hoje, da <strong>chegada da internet</strong>. Passei pelo <strong>ICQ, MSN, Orkut e Facebook</strong>.</li>
+      <li>Dados: do <strong>COBOL</strong> ao <strong>SQL</strong>, <strong>Firebird</strong> (com Clipper), <strong>Oracle</strong> e <strong>Firebase</strong> (não relacional).</li>
+      <li>Pioneiro no uso de <strong>thin clients</strong>, via RDP no Windows e no Linux.</li>
+      <li>Pioneiro no uso de <strong>leitores de código de barras</strong>, de <strong>biometria</strong> como identificação e de <strong>VPS</strong> (servidores virtuais).</li>
+      <li>E sigo até hoje: agora me dedico à <strong>inteligência artificial</strong>.</li>
+    </ul>
+    <div class="destaque">Os anos físicos passam, mas minha memória está sempre no futuro. Já me interesso por <strong>robótica</strong>.</div>
+  </section>
+
+  <section>
+    <h2>Competências</h2>
+    <div class="grid">
+      <div class="card"><h3>Inteligência Artificial</h3><p>IA generativa no dia a dia desde 2024 (ChatGPT, Claude): desenvolvimento assistido, pesquisa, documentação e automação. Busca semântica com IA (descrição de documentos e embeddings).</p></div>
+      <div class="card"><h3>Desenvolvimento</h3><p>Python, Flet, FastAPI, SQLite, Android. Experiência anterior em COBOL, Clipper, Delphi, Firebird e Unix. Sistemas como serviço (SaaS).</p></div>
+      <div class="card"><h3>Automação e IoT</h3><p>Arduino e Raspberry Pi: desenvolvimento de duas máquinas de autoatendimento. Integração de sistemas com rastreadores veiculares. Totens com biometria. Eletrônica automotiva (centrais eletrônicas).</p></div>
+      <div class="card"><h3>Eletrônica</h3><p>Fontes chaveadas, áudio, potência e inversores solares (2025). Elétrica residencial (2025). Engenharia reversa de placas: esquemas no KiCad, simulação e diagnóstico.</p></div>
+      <div class="card"><h3>Conteúdo audiovisual</h3><p>Coordenação de operação de vídeos curtos para marketing de afiliados (Mercado Livre, Shopee, Amazon), com CapCut e Canva.</p></div>
+      <div class="card"><h3>Gestão e processos</h3><p>Gestão de CPD e BI, logística com 25 caminhões/dia, automação de depósito e indicadores de vendas em tempo real.</p></div>
     </div>
   </section>
 
   <section>
-    <h2>Sobre Mim</h2>
-    <p>Tenho 64 anos, mas essa idade está só no calendário — na tecnologia, sempre me mantive atualizado. Acompanhei a internet desde o seu início e, mais recentemente, também comecei a usar Inteligência Artificial desde as primeiras ferramentas disponíveis, sempre em busca de aprender mais. Uso a tecnologia como ferramenta prática no dia a dia: para resolver problemas, organizar processos e buscar soluções. Topo qualquer desafio e estou aberto a mudanças de área de atuação e de localização.</p>
-  </section>
+    <h2>Experiência profissional</h2>
 
-  <section>
-    <h2>Resumo Profissional</h2>
-    <p>Técnico em Mecânica formado pela Escola Técnica Federal do Espírito Santo (ETFES, atual IFES), com estágio em metrologia na Hitachi Zosen, complementado por cursos em elétrica, eletrônica (manutenção de placas inversoras) e refrigeração. Mais de 6 anos de atuação prática e contínua em logística de transporte rodoviário, operando sistema próprio de controle de jornada de motoristas de caminhão conforme legislação vigente. Trajetória adicional em gestão de equipes e gerência de loja. Perfil <strong>autodidata</strong>, com busca constante por aprendizado e atualização técnica — inclusive há mais de 2 anos utiliza Inteligência Artificial (Claude) como ferramenta de estudo e apoio na resolução de problemas técnicos. Método estruturado para diagnóstico e solução de problemas, responsável, boa comunicação e disposição para aprender na prática.</p>
-  </section>
-
-  <section>
-    <h2>Áreas de Atuação</h2>
-    <div class="areas-grid">
-      <div class="area-card">
-        <h3>Mecânica</h3>
-        <span class="nivel nivel-pratica">Formação + estágio prático</span>
-        <p>Técnico formado (ETFES/IFES). Estágio em metrologia na Hitachi Zosen: paquímetro, micrômetro, relógio comparador. Leitura de desenhos técnicos, sistemas hidráulicos e pneumáticos, diagnóstico de falhas por método, montagem e desmontagem de componentes.</p>
-      </div>
-      <div class="area-card">
-        <h3>Logística de Transporte</h3>
-        <span class="nivel nivel-pratica">6+ anos de prática direta</span>
-        <p>Opera há mais de 6 anos o CRONUS, sistema próprio de controle de jornada de trabalho de motoristas de caminhão, utilizado por diversas transportadoras clientes desde a implantação da legislação da jornada do motorista — vivência prática com a operação logística de diferentes empresas do setor de transporte rodoviário.</p>
-      </div>
-      <div class="area-card">
-        <h3>Refrigeração</h3>
-        <span class="nivel nivel-curso">Curso concluído — busca prática</span>
-        <p>Curso online concluído. Possui as ferramentas do ofício; busca oportunidade para desenvolver prática de bancada e campo.</p>
-      </div>
-      <div class="area-card">
-        <h3>Eletrônica</h3>
-        <span class="nivel nivel-curso">Curso concluído — busca prática</span>
-        <p>Curso de manutenção de placas inversoras (curso online). Perfil autodidata em eletrônica, buscando oportunidade para aplicar e aprofundar na prática.</p>
-      </div>
-      <div class="area-card">
-        <h3>Elétrica</h3>
-        <span class="nivel nivel-curso">Curso concluído — busca prática</span>
-        <p>Curso online concluído. Busca oportunidade para desenvolver experiência prática de campo na área.</p>
-      </div>
-      <div class="area-card">
-        <h3>Inteligência Artificial</h3>
-        <span class="nivel nivel-pratica">2+ anos de uso prático</span>
-        <p>Autodidata, utiliza IA (Claude) há mais de 2 anos como ferramenta de estudo, pesquisa e resolução de problemas técnicos — aplicável ao aprendizado contínuo em qualquer área.</p>
-      </div>
+    <div class="exp">
+      <div class="exp-header"><span>Desenvolvimento Independente &mdash; IA, SaaS e Automação</span><span class="periodo">2024 – atual</span></div>
+      <ul>
+        <li>Desenvolvimento de <strong>SaaS</strong> e aplicativos em Python/Flet com apoio de IA generativa: gestão, crediário para microempreendedores e controle pessoal.</li>
+        <li>Repositório técnico com <strong>busca semântica por IA</strong> (descrição automática de documentos e busca por significado).</li>
+        <li>Engenharia reversa e documentação de placas eletrônicas (fontes chaveadas, placas de controle).</li>
+      </ul>
     </div>
+
+    <div class="exp">
+      <div class="exp-header"><span>Ajudante de Pedreiro &mdash; Obra do meu irmão Sérgio</span><span class="periodo">out/2024 – set/2025</span></div>
+      <p style="margin-top:4px">Após a morte da minha mãe, em 2024, enfrentei uma crise de pânico e cheguei a pensar em tirar a minha própria vida. Para superar, fui trabalhar como ajudante de pedreiro na obra do meu irmão Sérgio, sem nenhuma regalia. Ali aprendi muito sobre construção civil, inclusive como não fazer. E, mais uma vez, inovei: comprei um <strong>nível a laser</strong> para apresentá-lo ao pedreiro, ensinei-o a usá-lo e também a operar a <strong>máquina de assentar cerâmica</strong>.</p>
+      <p>O trabalho me devolveu o chão. Hoje sigo em frente, aprendendo todos os dias.</p>
+    </div>
+
+    <div class="exp">
+      <div class="exp-header"><span>CRONOS / TOTH &mdash; Jornada de Motoristas <span class="tag">inédito</span></span><span class="periodo">2015 – atual</span></div>
+      <ul>
+        <li><strong>TOTH (2015):</strong> cálculo da jornada de caminhoneiros a partir dos <strong>dados do rastreador</strong> dos caminhões, solução inédita na época.</li>
+        <li><strong>CRONOS (2020):</strong> evolução do TOTH, em operação até hoje.</li>
+        <li>Clientes: <strong>Ghisolphi</strong>, <strong>Delmar</strong> e <strong>Lida</strong> Transportadoras.</li>
+        <li>Grandes operações a serviço da <strong>Ambev</strong>: <strong>Fadel</strong> (Vitória) e <strong>Horizonte</strong> (Manaus, Recife e São Luís), com <strong>totens de consulta de produtividade com biometria</strong>, uma inovação na época.</li>
+      </ul>
+    </div>
+
+    <div class="exp">
+      <div class="exp-header"><span>IoT &mdash; Arduino e Raspberry Pi</span><span class="periodo">2017 – 2019</span></div>
+      <ul><li>Projeto e desenvolvimento de <strong>duas máquinas de autoatendimento</strong>.</li></ul>
+    </div>
+
+    <div class="exp">
+      <div class="exp-header"><span>Advocacia Nicolau &mdash; Desenvolvedor de Sistemas <span class="tag">inédito</span></span><span class="periodo">2011 – 2016</span></div>
+      <ul><li><strong>JOSHUA</strong> (Delphi): sistema de controle jurídico que gerenciou o escritório, com <strong>cálculo trabalhista</strong> integrado, inédito na época.</li></ul>
+    </div>
+
+    <div class="exp">
+      <div class="exp-header"><span>Formação técnica &mdash; Galvanoplastia e Eletrônica Automotiva</span><span class="periodo">2008 – 2009</span></div>
+      <ul>
+        <li><strong>2008:</strong> curso de banhos de metais (galvanoplastia), 6 meses.</li>
+        <li><strong>2009:</strong> curso de centrais eletrônicas automotivas em Foz do Iguaçu, na Luiz Auto Elétrica, na época a única que fabricava e vendia testadores de centrais eletrônicas da linha leve. Complemento em São Paulo: ciclo Otto e máquinas amarelas (linha pesada).</li>
+      </ul>
+    </div>
+
+    <div class="exp">
+      <div class="exp-header"><span>Dental Vitória &mdash; Auditor e Consultor</span><span class="periodo">2007</span></div>
+      <ul><li>Convidado para realizar auditoria e consultoria financeira e administrativa na empresa.</li></ul>
+    </div>
+
+    <div class="exp">
+      <div class="exp-header"><span>Rede Eletrocity (eletrodomésticos) &mdash; Gestão de Logística, CPD e BI · Desenvolvedor Interno</span><span class="periodo">2000 – 2007</span></div>
+      <ul>
+        <li>Sistema de <strong>garantia estendida</strong>, logo no início dessa categoria no varejo.</li>
+        <li>Sistema de <strong>carga e descarga</strong> com rastreio de procedência e lote; gestão do depósito com 25 caminhões de entrega por dia e implantação da <strong>entrega em 6 horas</strong>.</li>
+        <li><strong>Controle de vendas e resultados em tempo real</strong> entre as lojas, via RDP sobre internet por rádio (alta latência), numa época em que nem existia QR code.</li>
+        <li>Tecnologias: Clipper e banco de dados Firebird.</li>
+        <li><strong>Gestão de BI</strong> (indicadores e resultados da rede) e controle do CPD.</li>
+      </ul>
+    </div>
+
+    <div class="exp">
+      <div class="exp-header"><span>Superlar (varejo) &mdash; Suporte à Diretoria e RH</span><span class="periodo">1996 – 2000</span></div>
+    </div>
+
+    <div class="exp">
+      <div class="exp-header"><span>Banco do Brasil</span><span class="periodo">1983 – 1995</span></div>
+      <ul><li>Em paralelo: estudo de COBOL e desenvolvimento da <strong>primeira folha de pagamento automatizada da Prefeitura de São Gabriel da Palha</strong>.</li></ul>
+    </div>
+
+    <div class="exp">
+      <div class="exp-header"><span>Hitachi Zosen &mdash; Estágio em Metalmecânica (metrologia)</span><span class="periodo">1977</span></div>
+    </div>
+  </section>
+
+  <section style="break-inside: avoid;">
+    <h2>Linha do tempo</h2>
+    <ul class="timeline">
+      <li class="marco"><span class="ano">1967</span><span class="evento">Início de tudo: alfabetizado aos 5 anos</span></li>
+      <li><span class="ano">1974–76</span><span class="evento"><strong>ETFES</strong>: Técnico em Mecânica</span></li>
+      <li><span class="ano">1977</span><span class="evento"><strong>Hitachi Zosen</strong>: estágio em metalmecânica</span></li>
+      <li><span class="ano">1978</span><span class="evento"><strong>UFES</strong>: Agronomia (até o último semestre) e aprovação no Banco do Brasil</span></li>
+      <li class="marco"><span class="ano">1983–95</span><span class="evento"><strong>Banco do Brasil</strong> · primeiro computador (Sisco) · COBOL · primeira folha de pagamento automatizada da PM de São Gabriel da Palha</span></li>
+      <li><span class="ano">1996–00</span><span class="evento"><strong>Superlar</strong>: suporte à diretoria e RH</span></li>
+      <li class="marco"><span class="ano">2000–07</span><span class="evento"><strong>Eletrocity</strong>: gestão de logística, CPD e BI · garantia estendida · carga e descarga com rastreio · vendas em tempo real · entrega em 6 horas</span></li>
+      <li><span class="ano">2007</span><span class="evento"><strong>Dental Vitória</strong>: auditoria e consultoria financeira e administrativa</span></li>
+      <li><span class="ano">2008</span><span class="evento">Curso de <strong>banhos de metais</strong> (galvanoplastia)</span></li>
+      <li><span class="ano">2009</span><span class="evento"><strong>Centrais eletrônicas automotivas</strong>: Foz do Iguaçu (Luiz Auto Elétrica) e São Paulo (ciclo Otto e máquinas amarelas)</span></li>
+      <li><span class="ano">2011–16</span><span class="evento"><strong>Advocacia Nicolau</strong>: JOSHUA, com cálculo trabalhista inédito</span></li>
+      <li class="marco"><span class="ano">2015</span><span class="evento"><strong>TOTH</strong>: jornada de caminhoneiros pelo rastreador (Ghisolphi, Delmar, Lida) · totens com biometria para Fadel e Horizonte (Ambev)</span></li>
+      <li><span class="ano">2017–19</span><span class="evento"><strong>IoT</strong>: duas máquinas de autoatendimento (Arduino e Raspberry Pi)</span></li>
+      <li><span class="ano">2020</span><span class="evento"><strong>CRONOS</strong>: evolução do TOTH</span></li>
+      <li><span class="ano">2020–24</span><span class="evento">Dedicação em tempo integral aos cuidados da mãe, mantendo o CRONOS em operação</span></li>
+      <li class="marco"><span class="ano">2024</span><span class="evento"><strong>Inteligência artificial generativa</strong>: ChatGPT e depois Claude</span></li>
+      <li class="marco"><span class="ano">2024–25</span><span class="evento"><strong>Superação</strong>: depois da perda da minha mãe e de uma crise de pânico, recomecei como ajudante de pedreiro na obra do meu irmão Sérgio e levei o nível a laser para a obra</span></li>
+      <li><span class="ano">2025</span><span class="evento"><strong>Eletrônica</strong>: fontes chaveadas, áudio, potência e inversores solares · <strong>Elétrica Residencial</strong> (Grau Profissionalizante)</span></li>
+      <li class="marco"><span class="ano">2026</span><span class="evento">Desenvolvendo <strong>SaaS</strong> e aplicações com IA</span></li>
+    </ul>
   </section>
 
   <section>
     <h2>Formação</h2>
     <ul>
-      <li><strong>Técnico em Mecânica</strong> — Escola Técnica Federal do Espírito Santo (ETFES / atual IFES) — Concluído</li>
-      <li><strong>Agronomia</strong> — Universidade Federal do Espírito Santo (UFES) — Superior incompleto</li>
-      <li><strong>Elétrica</strong> — Curso online — Concluído</li>
-      <li><strong>Eletrônica / Manutenção de Placas Inversoras</strong> — Curso online — Concluído</li>
-      <li><strong>Refrigeração</strong> — Curso online — Concluído</li>
+      <li><strong>Técnico em Mecânica</strong> — Escola Técnica Federal do Espírito Santo (ETFES / atual IFES) — 1974–1976</li>
+      <li><strong>Agronomia</strong> — Universidade Federal do Espírito Santo (UFES) — superior incompleto</li>
+      <li><strong>Eletrônica</strong> — fontes chaveadas, áudio, potência, inversores solares e manutenção de placas inversoras — cursos (2025)</li>
+      <li><strong>Elétrica Residencial</strong> — Grau Profissionalizante — concluído (2025)</li>
+      <li><strong>Centrais eletrônicas automotivas</strong> — Luiz Auto Elétrica, Foz do Iguaçu, e complemento em São Paulo (ciclo Otto e máquinas amarelas) — 2009</li>
+      <li><strong>Banhos de metais (galvanoplastia)</strong> — 6 meses — 2008</li>
+      <li><strong>Refrigeração</strong> — curso online concluído</li>
     </ul>
   </section>
 
   <section>
-    <h2>Experiência Profissional</h2>
-
-    <div class="experiencia-item">
-      <div class="experiencia-header">
-        <span>Logística de Transporte &amp; Desenvolvimento de Sistemas — Autônomo</span>
-        <span class="periodo">Atual (6+ anos em logística)</span>
-      </div>
-      <ul>
-        <li>Opera e mantém o CRONUS, sistema de controle de jornada de trabalho de motoristas de caminhão, desde a implantação da legislação da jornada do motorista — atuação prática contínua com regras do transporte rodoviário.</li>
-        <li>Desenvolvimento de aplicativos de gestão (Python, bancos de dados, Android) para pequenos negócios.</li>
-      </ul>
-    </div>
-
-    <div class="experiencia-item">
-      <div class="experiencia-header">
-        <span>Advocacia Nicolau — Criação de Sistemas</span>
-        <span class="periodo">2005 – 2010</span>
-      </div>
-      <ul>
-        <li>Criou o CRONUS, sistema de controle de jornada de trabalho de motoristas de caminhão (setor de transporte rodoviário), hoje ainda em operação.</li>
-        <li>Criou o JOSHUA, sistema de gestão de processos jurídicos.</li>
-      </ul>
-    </div>
-
-    <div class="experiencia-item">
-      <div class="experiencia-header">
-        <span>Rede Eletrocity (eletrodomésticos) — Gerente Geral e Gerente de CPD</span>
-        <span class="periodo">1999 – 2005</span>
-      </div>
-      <ul>
-        <li>Gestão de loja e de equipe; atendimento, metas e rotinas operacionais.</li>
-        <li>Gerência do CPD: manutenção de equipamentos, suporte técnico e sistemas da rede.</li>
-      </ul>
-    </div>
-
-    <div class="experiencia-item">
-      <div class="experiencia-header">
-        <span>Banco do Brasil</span>
-        <span class="periodo">Anterior a 1999</span>
-      </div>
-      <ul><li>Atuação em função de nível inicial.</li></ul>
-    </div>
-
-    <div class="experiencia-item">
-      <div class="experiencia-header">
-        <span>Hitachi Zosen — Estagiário de Mecânica</span>
-        <span class="periodo">Após a formação técnica</span>
-      </div>
-      <ul><li>Estágio na área de metrologia: medição e controle dimensional de peças e componentes com instrumentos de precisão (paquímetro, micrômetro, relógio comparador), aplicando na prática os conhecimentos do curso técnico.</li></ul>
-    </div>
-
-  </section>
-
-  <section>
-    <h2>Informações Adicionais</h2>
+    <h2>Informações adicionais</h2>
     <ul>
+      <li>Residente em Cariacica – ES, próximo a Vitória. Disponibilidade total: horário integral ou meio período; presencial, híbrido ou remoto; viagens e mudança de cidade.</li>
       <li>CNH categoria AB.</li>
-      <li>Pessoa com Deficiência (PcD) — pequena deficiência física na mão esquerda, com laudo médico; não impede o exercício das atividades profissionais.</li>
-      <li>Residente em Cariacica – ES, com fácil acesso a Vitória.</li>
-      <li>Disponibilidade para início imediato e interesse em treinamentos e capacitações técnicas.</li>
-      <li>Aberto a mudanças de área de atuação e de localização.</li>
     </ul>
+  </section>
+
+  <section>
+    <h2>Entrevista antecipada (ou: FAQ do Sebastião)</h2>
+    <div class="destaque" style="border-left-color: var(--ambar); background:#fdf8ee;"><strong>Spoiler:</strong> as perguntas que você ia me fazer já estão respondidas aqui embaixo. Assim ninguém perde tempo: nem a empresa com mais um candidato, nem eu com mais uma entrevista de três perguntas vazias que eu poderia ter passado estudando. Se depois de ler ainda quiser conversar, ótimo: a gente já começa do ponto que importa. 😉</div>
+      <div class="exp"><div class="exp-header"><span>1. Como você enxerga a gestão de estoque?</span></div><p style="margin:4px 0 0">Estoque é dinheiro e deve ser tratado como tal: inventário diário e procedimentos individualizados (cada um responde pelo que é seu); produtividade × horas de trabalho; assertividade × produtividade. Meu foco é que a empresa tenha lucro. Vale o que combinamos, e todo acordo é válido até ser rediscutido.</p></div>
+      <div class="exp"><div class="exp-header"><span>2. Como você lidera uma equipe?</span></div><p style="margin:4px 0 0">Liderar não é dar ordens. É passar confiança e criar um objetivo comum.</p></div>
+      <div class="exp"><div class="exp-header"><span>3. Como você lida com um erro, seu ou de alguém da equipe?</span></div><p style="margin:4px 0 0">Erro não é punição, é aprendizado para não se repetir. Saber quem errou é importante para consertar, não para punir. Em alguns casos é preciso substituir quem errou: quando o mesmo erro se repete depois de explicado, ou quando falta compromisso.</p></div>
+      <div class="exp"><div class="exp-header"><span>4. Como você lida com um conflito com o chefe ou com um colega?</span></div><p style="margin:4px 0 0">Se é pessoal, tem de ser resolvido fora do trabalho. Se é sobre um processo, cabe um moderador. E, de novo, é um erro de que se aprende para não repetir e evoluir.</p></div>
+      <div class="exp"><div class="exp-header"><span>5. Como você usa a tecnologia e a IA para resolver problemas?</span></div><p style="margin:4px 0 0">A base é o conhecimento. A tecnologia é um recurso a mais, muito poderoso, que eu jamais ignoro. A IA dá opiniões e conhecimento, mas não toma decisões: quem decide sou eu.</p></div>
+      <div class="exp"><div class="exp-header"><span>6. Como você vê o atendimento ao cliente?</span></div><p style="margin:4px 0 0">Com temperança, olhando o objetivo da empresa. Cliente bem atendido volta; cliente enganado não volta nunca.</p></div>
+      <div class="exp"><div class="exp-header"><span>7. Por que contratar você, e não alguém mais jovem?</span></div><p style="margin:4px 0 0">Cada caso é um caso: em muitos cargos tem de ser o mais jovem mesmo. Não podemos criar uma competição, e sim uma união. O jovem traz velocidade e energia; eu trago 40 anos de erros já cometidos que ele não precisa repetir. Juntos, a equipe vai mais longe.</p></div>
+      <div class="exp"><div class="exp-header"><span>8. Qual a sua expectativa de remuneração e a sua disponibilidade?</span></div><p style="margin:4px 0 0">A empresa vive de lucro, e eu não posso ser um custo para ela. Quero ganhar o meu salário, e não que a empresa simplesmente me pague. Disponibilidade total: horário integral ou meio período, presencial, híbrido ou remoto, com disponibilidade para viagens e mudança de cidade.</p></div>
+      <div class="exp"><div class="exp-header"><span>9. O que você faz quando não sabe a resposta?</span></div><p style="margin:4px 0 0">Peço um tempo para aprender, ou ouço quem sabe.</p></div>
+      <div class="exp"><div class="exp-header"><span>10. Onde você quer estar daqui a 5 anos?</span></div><p style="margin:4px 0 0">Onde quero estar amanhã: sabendo mais do que sabia ontem, rendendo mais, mais sereno. E, se não puder produzir mais, que ensine mais.</p></div>
+  </section>
+
+  <section style="break-inside: avoid;">
+    <h2>O que ainda estou aprendendo</h2>
+    <p><em>Ninguém é feito só de virtudes. Estes são os pontos em que sigo trabalhando:</em></p>
+    <ul>
+      <li><strong>Dispersão:</strong> minha curiosidade me leva a abrir muitas frentes ao mesmo tempo. Estou aprendendo a escolher uma e levá-la até o fim antes de começar a próxima.</li>
+      <li><strong>Paciência com os detalhes:</strong> a vontade de avançar às vezes passa na frente da revisão. Hoje reviso com calma, e a própria construção deste currículo foi um exercício disso.</li>
+      <li><strong>Marketing e vendas:</strong> sei construir produtos, mas divulgar e vender não é o meu forte. Por isso valorizo parcerias e trabalho em equipe.</li>
+      <li><strong>Prática de bancada:</strong> tenho muita teoria em eletrônica, elétrica e refrigeração, e estou construindo a prática, placa por placa.</li>
+      <li><strong>Limitação parcial no braço esquerdo:</strong> o braço é um pouco atrofiado e tenho cerca de 30% de limitação em alguns movimentos dos dedos. Convivo com ela e me adapto com ferramentas e métodos (suportes, microscópio, organização da bancada). Não me impede de trabalhar; tenho laudo médico (PcD).</li>
+    </ul>
+  </section>
+
+  <section style="break-inside: avoid;">
+    <h2>Minha riqueza</h2>
+    <div class="destaque"><em>"O passado como arquivo, o presente como prêmio e o futuro como aprendizado."</em></div>
+    <div class="destaque"><em>"Não sou imortal: a escada rolante da vida vai chegar ao fim. Mas a cada degrau a menos na vida, um degrau a mais na sabedoria."</em></div>
+    <p style="margin-top:10px">Se eu tivesse um nome na mitologia grega, seria <strong>Quíron</strong>: o mestre que aceitou ser mortal e fez da sua sabedoria um legado.</p>
+    <p>Por isso me considero <strong>milionário</strong>. Não de algo que pode evaporar, mas de uma riqueza infinita: tudo o que vivi, aprendi e posso deixar.</p>
+  </section>
+
+  <section>
+    <h2>Pessoal</h2>
+    <p>Esposo de Leila, pai de Mirela e Marcus Vinicius e avô de Bernardo.</p>
+  </section>
+
+  <section style="break-inside: avoid;">
+    <h2>Uma reflexão final</h2>
+    <p>Um filme reforçou o que penso: <strong><em>O Preço do Amanhã</em></strong> (<em>In Time</em>, 2011). Nele, o tempo é a moeda: as pessoas pagam tudo com minutos de vida. Os quase imortais vivem parados e com medo de perder; os que têm pouco tempo vivem cada minuto com intensidade.</p>
+    <p>Para mim, o tempo também é a verdadeira moeda. Por isso a remuneração pelo meu tempo é muito mais que dinheiro, e por isso não quero ser imortal: quero que cada degrau valha.</p>
+    <p>É o que penso hoje. Se amanhã me convencerem do contrário, eu mudo, porque quem está sempre certo para de aprender.</p>
+    <div class="destaque">🎬 Indicação: <strong>O Preço do Amanhã</strong> (<em>In Time</em>, 2011).</div>
+  </section>
+
+  <section style="break-inside: avoid;">
+    <h2>Declaração</h2>
+    <p>Declaro que neste currículo não inventei nada. Quase tudo, cerca de 90%, foi resgatado da minha memória. Como humano, posso ter falhado em alguma data ou sequência, mas não nos fatos que vivi.</p>
   </section>
 
 </main>
 
 <footer>
-  <p>Sebastião Alves Nicolau &middot; sanicolauvix@gmail.com &middot; (27) 99989-8737</p>
-  <div class="links-rapidos">
-    <a class="link-btn" href="https://wa.me/5527999898737" target="_blank" rel="noopener">WhatsApp</a>
-    <a class="link-btn" href="https://www.linkedin.com/in/sebastiao-alves-nicolau-421ab71bb/" target="_blank" rel="noopener">LinkedIn</a>
-    <a class="link-btn" href="https://www.facebook.com/sebastiaoalves.nicolau" target="_blank" rel="noopener">Facebook</a>
-    <a class="link-btn" href="https://github.com/sanicolauvix" target="_blank" rel="noopener">GitHub</a>
-  </div>
-  <p style="margin-top:16px; font-size:0.78rem; color:#a8adb5;">Página elaborada com apoio de Inteligência Artificial (Claude, Anthropic) — exemplo prático do uso de IA citado acima.</p>
+  <p>Currículo elaborado com apoio de Inteligência Artificial (Claude, Anthropic): a IA como ferramenta; a experiência, o conteúdo e as decisões são meus.</p>
 </footer>
 
 </body>
