@@ -158,7 +158,7 @@
   </section>
 
   <div class="ouvir" id="ouvir">
-    <button class="obtn" type="button" id="oPlay"><span class="oic" id="oIc" aria-hidden="true">▶</span><span><b id="oTitle">Sem tempo para ler? Ouça o resumo</b><small id="oSub">O currículo inteiro em uns 3 minutos</small></span></button>
+    <button class="obtn" type="button" id="oPlay"><span class="oic" id="oIc" aria-hidden="true">▶</span><span><b id="oTitle">Sem tempo para ler? Ouça antes</b><small id="oSub">Do que se trata, em 2 minutos</small></span></button>
     <div class="orow" id="oRow" hidden><div class="obar"><i id="oBar"></i></div><button class="ostop" type="button" id="oSpeed" aria-label="Velocidade da voz">1,2×</button><button class="ostop" type="button" id="oStop">Parar</button></div>
     <p class="onow" id="oNow" hidden aria-live="polite"></p>
     <details id="oDet"><summary>Prefere ler? Veja o resumo em texto</summary><div id="oText"></div></details>
@@ -396,20 +396,21 @@
 
 
 <script>
+const PRONUNCIA = [[/\babas\b/g, "ábas"], [/\bCPD\b/g, "cê pê dê"], [/\bBI\b/g, "bi ai"]];
+const falar = t => PRONUNCIA.reduce((x,[re,r])=>x.replace(re,r), t);
 const RESUMO = [
-"Olá. Eu sou o Sebastião Alves Nicolau, tenho 64 anos e moro em Cariacica, no Espírito Santo.",
-"São mais de 40 anos de tecnologia, sempre entre os primeiros a aplicar cada novidade na prática.",
-"Sou técnico em Mecânica pela Escola Técnica Federal, estagiei em metrologia na Hitachi Zosen e cursei Agronomia na UFES.",
-"Trabalhei no Banco do Brasil de 1983 a 1995. Em paralelo, troquei um carro pelo meu primeiro computador, aprendi COBOL e fiz a primeira folha de pagamento automatizada da Prefeitura de São Gabriel da Palha.",
-"Na rede Eletrocity, cuidei da logística, do CPD e do BI. Gerenciei um depósito com 25 caminhões por dia, implantei a entrega em 6 horas e criei um sistema de garantia estendida logo no início dessa categoria.",
-"Na Advocacia Nicolau, criei o JOSHUA, um sistema jurídico com cálculo trabalhista integrado.",
-"Em 2015 criei o TOTH, que calculava a jornada dos caminhoneiros pelos rastreadores, algo inédito na época. A evolução dele, o CRONOS, está em operação até hoje, atendendo transportadoras e operações da Ambev.",
-"Também fiz totens com biometria, máquinas de autoatendimento com Arduino e Raspberry Pi, e trabalhei com centrais eletrônicas automotivas.",
-"Depois de cuidar da minha mãe até o fim, recomecei como ajudante de pedreiro na obra do meu irmão, e até ali inovei, levando o nível a laser para a obra.",
-"Hoje desenvolvo aplicativos e sistemas em Python com a inteligência artificial como parceira na equipe, e sigo estudando eletrônica, elétrica, refrigeração e mecânica.",
-"Tenho disponibilidade total: presencial, remoto, viagens e mudança de cidade.",
-"Não quero ser só mais um candidato. Quero ser a pessoa que vai resolver o problema de quem me contratar.",
-"Os detalhes, as perguntas de entrevista já respondidas e os meus pontos fracos estão aqui embaixo. Obrigado por ouvir."
+"Olá, aqui é o Sebastião. Que bom que você abriu.",
+"Já vou avisando: isto não é bem um currículo. Eu quebrei algumas regras de propósito. Chamei de Ficha Técnica e Manual do Usuário, e coloquei um aviso: leia com atenção antes de contratar.",
+"Foi o jeito que encontrei de fazer você ler até o fim. Porque currículo igual a todos, ninguém lê.",
+"Sou modelo 1962. Sessenta e quatro anos de idade, mais de quarenta de tecnologia, e ainda em pleno funcionamento.",
+"Comecei trocando um carro pelo meu primeiro computador. Junto veio uma folha de pagamento em COBOL, e foi estudando aquele código que tudo começou.",
+"Passei pelo Banco do Brasil, pela logística da Eletrocity, com vinte e cinco caminhões por dia e entrega em seis horas, e pelo escritório da minha irmã, onde criei o JOSHUA.",
+"Em 2015 criei o TOTH, que calculava a jornada dos caminhoneiros pelos rastreadores. Ninguém fazia isso. A evolução dele, o CRONOS, roda até hoje.",
+"Também tive os meus tropeços. Depois que perdi a minha mãe, recomecei como ajudante de pedreiro. E até ali dei um jeito de inovar: levei o nível a laser para a obra.",
+"Hoje programo com a inteligência artificial como parceira de equipe, não como ferramenta. E continuo estudando: eletrônica, elétrica, refrigeração e mecânica.",
+"Mais uma regra quebrada: aqui embaixo eu já respondi as perguntas da entrevista. Assim ninguém perde tempo.",
+"E outra: contei também os meus defeitos. Ninguém é feito só de virtudes.",
+"Não quero ser mais um candidato. Quero ser a pessoa que vai resolver o seu problema. Se quiser conversar, o meu telefone está logo aqui em cima. Obrigado por ouvir."
 ];
 (function(){
   const $=id=>document.getElementById(id);
@@ -440,13 +441,13 @@ const RESUMO = [
     const on = state!=="idle";
     row.hidden=!on; now.hidden=!on;
     ic.textContent = state==="playing" ? "❚❚" : "▶";
-    title.textContent = state==="playing" ? "Ouvindo…" : state==="paused" ? "Pausado, toque para continuar" : "Sem tempo para ler? Ouça o resumo";
-    sub.textContent = state==="idle" ? "O currículo inteiro em uns 3 minutos" : Math.min(idx+1,RESUMO.length)+" de "+RESUMO.length;
+    title.textContent = state==="playing" ? "Ouvindo…" : state==="paused" ? "Pausado, toque para continuar" : "Sem tempo para ler? Ouça antes";
+    sub.textContent = state==="idle" ? "Do que se trata, em 2 minutos" : Math.min(idx+1,RESUMO.length)+" de "+RESUMO.length;
     bar.style.width = (state==="idle"?0:(idx/RESUMO.length*100))+"%";
   }
   function speak(){
     if (idx>=RESUMO.length){ state="idle"; idx=0; ui(); return; }
-    const my=++gen; const u=new SpeechSynthesisUtterance(RESUMO[idx]);
+    const my=++gen; const u=new SpeechSynthesisUtterance(falar(RESUMO[idx]));
     u.lang="pt-BR"; if (voice) u.voice=voice; u.rate=RATES[ri];
     u.onend=()=>{ if (my===gen && state==="playing"){ idx++; speak(); } };
     u.onerror=e=>{ if (my===gen && e.error!=="interrupted" && e.error!=="canceled"){ state="idle"; ui(); $("oDet").open=true; } };
