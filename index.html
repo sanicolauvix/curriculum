@@ -159,7 +159,7 @@
 
   <div class="ouvir" id="ouvir">
     <button class="obtn" type="button" id="oPlay"><span class="oic" id="oIc" aria-hidden="true">▶</span><span><b id="oTitle">Sem tempo para ler? Ouça o resumo</b><small id="oSub">O currículo inteiro em uns 3 minutos</small></span></button>
-    <div class="orow" id="oRow" hidden><div class="obar"><i id="oBar"></i></div><button class="ostop" type="button" id="oStop">Parar</button></div>
+    <div class="orow" id="oRow" hidden><div class="obar"><i id="oBar"></i></div><button class="ostop" type="button" id="oSpeed" aria-label="Velocidade da voz">1,2×</button><button class="ostop" type="button" id="oStop">Parar</button></div>
     <p class="onow" id="oNow" hidden aria-live="polite"></p>
     <details id="oDet"><summary>Prefere ler? Veja o resumo em texto</summary><div id="oText"></div></details>
   </div>
@@ -420,7 +420,16 @@ const RESUMO = [
     play.hidden=true; $("oDet").open=true; $("oDet").querySelector("summary").textContent="Resumo do currículo";
     return;
   }
-  let voice=null, idx=0, state="idle";
+  let voice=null, idx=0, state="idle", gen=0;
+  const RATES=[1,1.2,1.4,1.6]; let ri=1;
+  try{ const r=+localStorage.getItem("vozRate"); if (RATES.includes(r)) ri=RATES.indexOf(r); }catch(e){}
+  const spB=document.getElementById("oSpeed");
+  const spTxt=()=>{ spB.textContent=String(RATES[ri]).replace(".",",")+"×"; }; spTxt();
+  spB.addEventListener("click", ()=>{
+    ri=(ri+1)%RATES.length; spTxt();
+    try{ localStorage.setItem("vozRate", RATES[ri]); }catch(e){}
+    if (state==="playing"){ synth.cancel(); speak(); }
+  });
   function pickVoice(){
     const vs=synth.getVoices();
     voice = vs.find(v=>/pt[-_]BR/i.test(v.lang) && /antonio|daniel|male|masculin/i.test(v.name))
@@ -437,10 +446,10 @@ const RESUMO = [
   }
   function speak(){
     if (idx>=RESUMO.length){ state="idle"; idx=0; ui(); return; }
-    const u=new SpeechSynthesisUtterance(RESUMO[idx]);
-    u.lang="pt-BR"; if (voice) u.voice=voice; u.rate=0.95;
-    u.onend=()=>{ if (state==="playing"){ idx++; speak(); } };
-    u.onerror=e=>{ if (e.error!=="interrupted" && e.error!=="canceled"){ state="idle"; ui(); $("oDet").open=true; } };
+    const my=++gen; const u=new SpeechSynthesisUtterance(RESUMO[idx]);
+    u.lang="pt-BR"; if (voice) u.voice=voice; u.rate=RATES[ri];
+    u.onend=()=>{ if (my===gen && state==="playing"){ idx++; speak(); } };
+    u.onerror=e=>{ if (my===gen && e.error!=="interrupted" && e.error!=="canceled"){ state="idle"; ui(); $("oDet").open=true; } };
     now.textContent=RESUMO[idx]; ui(); synth.speak(u);
   }
   play.addEventListener("click", ()=>{
