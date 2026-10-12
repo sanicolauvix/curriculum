@@ -113,6 +113,23 @@
     section { padding: 12px 18px; margin-bottom: 10px; break-inside: auto; }
     main { padding-top: 14px; }
   }
+
+  /* Resumo em áudio */
+  .ouvir { background: var(--branco); border:1px solid var(--borda); border-radius:10px; padding:14px; margin-bottom:14px; }
+  .ouvir .obtn { width:100%; display:flex; align-items:center; gap:12px; background:var(--azul); color:#fff; border:0; border-radius:8px; padding:12px 14px; text-align:left; cursor:pointer; font:inherit; min-height:56px; }
+  .ouvir .oic { flex:none; width:38px; height:38px; border-radius:50%; background:var(--ambar); display:grid; place-items:center; font-size:1.05rem; }
+  .ouvir .obtn b { display:block; font-size:1.02rem; }
+  .ouvir .obtn small { opacity:.8; }
+  .ouvir .orow { display:flex; align-items:center; gap:10px; margin-top:10px; }
+  .ouvir .orow[hidden], .ouvir .onow[hidden], .ouvir .obtn[hidden] { display:none; }
+  .ouvir .obar { flex:1; height:6px; border-radius:3px; background:var(--borda); overflow:hidden; }
+  .ouvir .obar i { display:block; height:100%; width:0; background:var(--ambar); transition:width .3s; }
+  .ouvir .ostop { background:none; border:1px solid var(--borda); border-radius:999px; padding:6px 12px; cursor:pointer; font:inherit; font-size:.85rem; }
+  .ouvir .onow { margin:10px 0 0; font-size:1rem; color:var(--cinza-escuro); min-height:2.9em; }
+  .ouvir details { margin-top:10px; }
+  .ouvir summary { cursor:pointer; color:#7a8190; font-size:.88rem; }
+  .ouvir details p { margin:.5em 0; }
+  @media print { .ouvir { display:none; } }
 </style>
 </head>
 <body>
@@ -139,6 +156,13 @@
   <section class="destaque" style="border:1px solid var(--borda); border-left:4px solid var(--ambar); background:#fdf8ee;">
     <strong>Uma nota antes de começar:</strong> este não é um currículo tradicional, preso a regras e formatos. Assim como fiz ao longo de toda a carreira, decidi inovar também aqui: estas páginas são o retrato da minha trajetória, de quem eu sou, e não apenas uma lista de cargos.
   </section>
+
+  <div class="ouvir" id="ouvir">
+    <button class="obtn" type="button" id="oPlay"><span class="oic" id="oIc" aria-hidden="true">▶</span><span><b id="oTitle">Sem tempo para ler? Ouça o resumo</b><small id="oSub">O currículo inteiro em uns 3 minutos</small></span></button>
+    <div class="orow" id="oRow" hidden><div class="obar"><i id="oBar"></i></div><button class="ostop" type="button" id="oStop">Parar</button></div>
+    <p class="onow" id="oNow" hidden aria-live="polite"></p>
+    <details id="oDet"><summary>Prefere ler? Veja o resumo em texto</summary><div id="oText"></div></details>
+  </div>
 
   <section>
     <h2>Objetivo</h2>
@@ -370,5 +394,62 @@
   <p>Currículo elaborado com apoio de Inteligência Artificial (Claude, Anthropic): a IA como ferramenta; a experiência, o conteúdo e as decisões são meus.</p>
 </footer>
 
+
+<script>
+const RESUMO = [
+"Olá. Eu sou o Sebastião Alves Nicolau, tenho 64 anos e moro em Cariacica, no Espírito Santo.",
+"São mais de 40 anos de tecnologia, sempre entre os primeiros a aplicar cada novidade na prática.",
+"Sou técnico em Mecânica pela Escola Técnica Federal, estagiei em metrologia na Hitachi Zosen e cursei Agronomia na UFES.",
+"Trabalhei no Banco do Brasil de 1983 a 1995. Em paralelo, troquei um carro pelo meu primeiro computador, aprendi COBOL e fiz a primeira folha de pagamento automatizada da Prefeitura de São Gabriel da Palha.",
+"Na rede Eletrocity, cuidei da logística, do CPD e do BI. Gerenciei um depósito com 25 caminhões por dia, implantei a entrega em 6 horas e criei um sistema de garantia estendida logo no início dessa categoria.",
+"Na Advocacia Nicolau, criei o JOSHUA, um sistema jurídico com cálculo trabalhista integrado.",
+"Em 2015 criei o TOTH, que calculava a jornada dos caminhoneiros pelos rastreadores, algo inédito na época. A evolução dele, o CRONOS, está em operação até hoje, atendendo transportadoras e operações da Ambev.",
+"Também fiz totens com biometria, máquinas de autoatendimento com Arduino e Raspberry Pi, e trabalhei com centrais eletrônicas automotivas.",
+"Depois de cuidar da minha mãe até o fim, recomecei como ajudante de pedreiro na obra do meu irmão, e até ali inovei, levando o nível a laser para a obra.",
+"Hoje desenvolvo aplicativos e sistemas em Python com a inteligência artificial como parceira na equipe, e sigo estudando eletrônica, elétrica, refrigeração e mecânica.",
+"Tenho disponibilidade total: presencial, remoto, viagens e mudança de cidade.",
+"Não quero ser só mais um candidato. Quero ser a pessoa que vai resolver o problema de quem me contratar.",
+"Os detalhes, as perguntas de entrevista já respondidas e os meus pontos fracos estão aqui embaixo. Obrigado por ouvir."
+];
+(function(){
+  const $=id=>document.getElementById(id);
+  const play=$("oPlay"), ic=$("oIc"), title=$("oTitle"), sub=$("oSub"), row=$("oRow"), bar=$("oBar"), now=$("oNow");
+  $("oText").innerHTML = RESUMO.map(t=>"<p>"+t+"</p>").join("");
+  const synth = window.speechSynthesis;
+  if (!synth || typeof SpeechSynthesisUtterance==="undefined"){
+    play.hidden=true; $("oDet").open=true; $("oDet").querySelector("summary").textContent="Resumo do currículo";
+    return;
+  }
+  let voice=null, idx=0, state="idle";
+  function pickVoice(){
+    const vs=synth.getVoices();
+    voice = vs.find(v=>/pt[-_]BR/i.test(v.lang) && /antonio|daniel|male|masculin/i.test(v.name))
+         || vs.find(v=>/pt[-_]BR/i.test(v.lang)) || vs.find(v=>/^pt/i.test(v.lang)) || null;
+  }
+  pickVoice(); if (synth.onvoiceschanged!==undefined) synth.onvoiceschanged=pickVoice;
+  function ui(){
+    const on = state!=="idle";
+    row.hidden=!on; now.hidden=!on;
+    ic.textContent = state==="playing" ? "❚❚" : "▶";
+    title.textContent = state==="playing" ? "Ouvindo…" : state==="paused" ? "Pausado, toque para continuar" : "Sem tempo para ler? Ouça o resumo";
+    sub.textContent = state==="idle" ? "O currículo inteiro em uns 3 minutos" : Math.min(idx+1,RESUMO.length)+" de "+RESUMO.length;
+    bar.style.width = (state==="idle"?0:(idx/RESUMO.length*100))+"%";
+  }
+  function speak(){
+    if (idx>=RESUMO.length){ state="idle"; idx=0; ui(); return; }
+    const u=new SpeechSynthesisUtterance(RESUMO[idx]);
+    u.lang="pt-BR"; if (voice) u.voice=voice; u.rate=0.95;
+    u.onend=()=>{ if (state==="playing"){ idx++; speak(); } };
+    u.onerror=e=>{ if (e.error!=="interrupted" && e.error!=="canceled"){ state="idle"; ui(); $("oDet").open=true; } };
+    now.textContent=RESUMO[idx]; ui(); synth.speak(u);
+  }
+  play.addEventListener("click", ()=>{
+    if (state==="playing"){ state="paused"; synth.cancel(); ui(); }
+    else { state="playing"; synth.cancel(); speak(); }
+  });
+  $("oStop").addEventListener("click", ()=>{ state="idle"; idx=0; synth.cancel(); ui(); });
+  window.addEventListener("pagehide", ()=>synth.cancel());
+})();
+</script>
 </body>
 </html>
