@@ -422,7 +422,7 @@ const RESUMO = [
     return;
   }
   let voice=null, idx=0, state="idle", gen=0;
-  const RATES=[1,1.2,1.4,1.6]; let ri=1;
+  const RATES=[1,1.2,1.4,1.6]; let ri=3;
   try{ const r=+localStorage.getItem("vozRate"); if (RATES.includes(r)) ri=RATES.indexOf(r); }catch(e){}
   const spB=document.getElementById("oSpeed");
   const spTxt=()=>{ spB.textContent=String(RATES[ri]).replace(".",",")+"×"; }; spTxt();
