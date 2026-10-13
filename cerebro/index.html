@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tenho dois cérebros — Sebastião Alves Nicolau</title>
+<meta name="description" content="Aos 64 anos descobri que tenho dois cérebros: um humano e um biônico. Ouça os dois se apresentarem e conheça a minha história.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Tenho dois cérebros 🧠🤖">
+<meta property="og:description" content="Um humano, que sonha e decide. Um biônico, que organiza e guarda. Ouça os dois e conheça a minha autobiografia viva.">
+<meta property="og:image" content="https://sanicolauvix.github.io/curriculum/cerebro/cerebro.jpg">
+<meta property="og:image:width" content="1024">
+<meta property="og:image:height" content="572">
+<meta property="og:url" content="https://sanicolauvix.github.io/curriculum/cerebro/">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sanicolauvix.github.io/curriculum/cerebro/cerebro.jpg">
+<style>
+:root{--bg:#05080c;--ink:#fff;--accent:#3fd0ff;--gold:#f5c542}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#05080c}}
+:root[data-theme="dark"]{--bg:#05080c}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family:"Segoe UI",system-ui,sans-serif;overflow:hidden}
+.stage{position:fixed;inset:0;display:grid;place-items:center}
+@media (max-aspect-ratio:1/1){.stage{align-content:start;padding-top:12vh}}
+.blur{position:absolute;inset:0;background:url(cerebro.jpg) center/cover;filter:blur(30px) brightness(.45);transform:scale(1.15)}
+.img{position:relative;max-width:100%;max-height:100%;width:100%;object-fit:contain}
+.cap{position:fixed;left:16px;right:16px;bottom:calc(110px + env(safe-area-inset-bottom,0px));text-align:center;pointer-events:none}
+.cap .who{display:inline-block;font-weight:800;font-size:15px;letter-spacing:.06em;padding:4px 12px;border-radius:999px;margin-bottom:8px}
+.cap .who.H{background:var(--gold);color:#111}.cap .who.B{background:var(--accent);color:#04121d}
+.cap p{margin:0 auto;max-width:640px;font-size:clamp(20px,5.4vw,30px);font-weight:800;line-height:1.25;text-shadow:0 2px 8px #000,0 0 2px #000}
+.bar{position:fixed;left:16px;right:16px;bottom:calc(20px + env(safe-area-inset-bottom,0px));display:flex;gap:10px;justify-content:center;align-items:center}
+button,.go{font:inherit;font-weight:800;border:0;border-radius:999px;min-height:52px;padding:0 22px;font-size:18px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.play{background:#c0392b;color:#fff;box-shadow:0 4px 0 #7d241b}
+.speed{background:rgba(255,255,255,.14);color:#fff;min-width:64px;justify-content:center}
+.go{background:var(--gold);color:#111}
+[hidden]{display:none!important}
+.end{position:fixed;inset:0;display:grid;place-items:center;background:rgba(0,0,0,.72);text-align:center;padding:16px}
+.end h2{font-size:clamp(26px,7vw,44px);margin:0 0 12px;color:var(--gold)}
+.end p{font-size:18px;margin:0 0 22px;opacity:.9}
+</style></head>
+<body>
+<div class="stage"><div class="blur"></div><img class="img" src="cerebro.jpg" alt="Cérebro duplo: humano mais cyber"></div>
+<div class="cap" id="cap" hidden><span class="who" id="who"></span><p id="txt"></p></div>
+<div class="end" id="end" hidden><div><h2>Quer conhecer a minha história?</h2><p>Os dois cérebros contam o resto.</p><a class="go" href="https://claude.ai/artifact/6NPtXLSwgajGMN8cHTeDH4" target="_blank" rel="noopener">👉 Abrir o Degraus</a></div></div>
+<div class="bar"><button class="play" id="play" type="button">▶ Ouvir</button><button class="speed" id="speed" type="button" aria-label="Velocidade">1,6×</button></div>
+<script>
+const FALAS=[
+{w:"B",t:"Você sabia que é possível ter dois cérebros?"},
+{w:"H",t:"Eu tenho. E descobri isso aos 64 anos."},
+{w:"H",t:"Um é o meu: tem as ideias, toma as decisões e se emociona."},
+{w:"B",t:"O outro sou eu: o cérebro biônico, com a tecnologia do Claude, de inteligência artificial. Eu organizo, guardo e oriento."},
+{w:"H",t:"Juntos, contamos a minha vida inteira, sem esconder nada. Da escola em 1967 até hoje."},
+{w:"B",t:"Isso não é ficção científica. É possível, e está ao alcance de qualquer um."},
+{w:"H",t:"Quer conhecer a minha história? Clique no link. Ele leva direto para o começo do Degraus."},
+{w:"B",t:"E lá, nós dois contamos o resto."}
+];
+const QUEM={H:"🧠 CÉREBRO HUMANO",B:"🤖 CÉREBRO BIÔNICO · CLAUDE IA"};
+const PRON=[[/\bClaude\b/g,"Clôd"]]; const falar=t=>PRON.reduce((x,[r,v])=>x.replace(r,v),t);
+const $=id=>document.getElementById(id), synth=window.speechSynthesis;
+const RATES=[1,1.2,1.4,1.6]; let ri=3, idx=0, gen=0, playing=false, v1=null, v2=null;
+const spTxt=()=>$("speed").textContent=String(RATES[ri]).replace(".",",")+"×"; spTxt();
+$("speed").onclick=()=>{ri=(ri+1)%RATES.length;spTxt();};
+function pick(){ if(!synth) return; const vs=synth.getVoices(), pt=vs.filter(v=>/pt[-_]BR/i.test(v.lang)), a=pt.length?pt:vs.filter(v=>/^pt/i.test(v.lang));
+  v1=a.find(v=>/antonio|daniel|male|masculin/i.test(v.name))||a[0]||null; v2=a.find(v=>v!==v1)||v1; }
+if(synth){pick(); synth.onvoiceschanged=pick;}
+function show(L){$("cap").hidden=false;$("who").className="who "+L.w;$("who").textContent=QUEM[L.w];$("txt").textContent=L.t;}
+function step(){
+  if(idx>=FALAS.length){playing=false;$("play").textContent="↺ De novo";$("end").hidden=false;return;}
+  const L=FALAS[idx]; show(L);
+  if(!synth){ setTimeout(()=>{idx++;playing&&step();}, 2600); return; }
+  const my=++gen, u=new SpeechSynthesisUtterance(falar(L.t)); u.lang="pt-BR";
+  const v=L.w==="B"?v2:v1; if(v)u.voice=v; u.rate=RATES[ri]; if(L.w==="B"&&v2===v1)u.pitch=1.45;
+  u.onend=()=>{ if(my===gen&&playing){idx++; setTimeout(step,250);} };
+  synth.speak(u);
+}
+$("play").onclick=()=>{
+  if(playing){playing=false;gen++;synth&&synth.cancel();$("play").textContent="▶ Continuar";return;}
+  if(idx>=FALAS.length){idx=0;$("end").hidden=true;}
+  playing=true;$("play").textContent="❚❚ Pausar";synth&&synth.cancel();step();
+};
+window.addEventListener("pagehide",()=>synth&&synth.cancel());
+</script>
+</body></html>
